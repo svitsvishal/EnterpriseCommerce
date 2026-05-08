@@ -1,11 +1,11 @@
 # EnterpriseCommerce
 Dapper
-→ CQRS
-→ Redis
-→ RabbitMQ
-→ Background Jobs
-→ Microservices
-→ Event-driven architecture
+ CQRS
+ Redis
+RabbitMQ
+Background Jobs
+Microservices
+Event-driven architecture
 JWT Authentication
 Refresh Tokens
 Role-based Authorization
