@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/EnterpriseCommerce.API/EnterpriseCommerce.API.csproj" />
+    <Project Path="src/EnterpriseCommerce.Application/EnterpriseCommerce.Application.csproj" />
+    <Project Path="src/EnterpriseCommerce.Domain/EnterpriseCommerce.Domain.csproj" />
+    <Project Path="src/EnterpriseCommerce.Infrastructure/EnterpriseCommerce.Infrastructure.csproj" />
+    <Project Path="src/EnterpriseCommerce.Shared/EnterpriseCommerce.Shared.csproj" />
+    <Project Path="src/EnterpriseCommerce.Web/EnterpriseCommerce.Web.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/EnterpriseCommerce.Tests/EnterpriseCommerce.Tests.csproj" />
+  </Folder>
+</Solution>

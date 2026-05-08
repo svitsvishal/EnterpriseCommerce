@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <Compile Remove="Persistence\AppDbContext.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EnterpriseCommerce.Application\EnterpriseCommerce.Application.csproj" />
+    <ProjectReference Include="..\EnterpriseCommerce.Domain\EnterpriseCommerce.Domain.csproj" />
+    <ProjectReference Include="..\EnterpriseCommerce.Shared\EnterpriseCommerce.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.72" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="10.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Configurations\" />
+    <Folder Include="Identity\" />
+    <Folder Include="Caching\" />
+    <Folder Include="Messaging\" />
+    <Folder Include="Data\" />
+    <Folder Include="Persistence\" />
+    <Folder Include="StoredProcedures\" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
