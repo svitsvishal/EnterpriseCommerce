@@ -15,13 +15,13 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.1" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="10.0.7" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.7" />
+    <PackageReference Include="RabbitMQ.Client" Version="7.2.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Configurations\" />
     <Folder Include="Identity\" />
     <Folder Include="Caching\" />
-    <Folder Include="Messaging\" />
     <Folder Include="Data\" />
     <Folder Include="Persistence\" />
     <Folder Include="StoredProcedures\" />

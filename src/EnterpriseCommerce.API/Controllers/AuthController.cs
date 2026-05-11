@@ -1,4 +1,5 @@
-﻿using EnterpriseCommerce.Application.Features.Auth.DTOs;
+﻿using EnterpriseCommerce.Application.Events;
+using EnterpriseCommerce.Application.Features.Auth.DTOs;
 using EnterpriseCommerce.Application.Interfaces;
 using EnterpriseCommerce.Domain.Entities;
 using EnterpriseCommerce.Domain.Interfaces;
@@ -14,18 +15,19 @@ namespace EnterpriseCommerce.API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
-
+        private readonly IMessageBroker _messageBroker;
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
         private readonly IRefreshTokenRepository _refreshTokenRepository;
 
         public AuthController(
             IUserRepository userRepository,
             IJwtTokenGenerator jwtTokenGenerator,
-            IRefreshTokenRepository refreshTokenRepository)
+            IRefreshTokenRepository refreshTokenRepository , IMessageBroker messageBroker)
         {
             _userRepository = userRepository;
             _jwtTokenGenerator = jwtTokenGenerator;
             _refreshTokenRepository = refreshTokenRepository;
+            _messageBroker = messageBroker;
         }
 
         [HttpPost("register")]
@@ -51,7 +53,15 @@ namespace EnterpriseCommerce.API.Controllers
             };
 
             await _userRepository.CreateAsync(user);
-            
+            var userRegisteredEvent =
+    new UserRegisteredEvent
+    {
+        UserId = user.Id,
+        Email = user.Email,
+        FullName = user.FullName
+    };
+
+            _messageBroker.Publish(userRegisteredEvent);
             BackgroundJob.Enqueue<EmailJobService>(
     x => x.SendWelcomeEmail(user.Email));
 

@@ -5,7 +5,9 @@ using EnterpriseCommerce.Application.Features.Products.Commands;
 using EnterpriseCommerce.Application.Features.Products.Validators;
 using EnterpriseCommerce.Application.Interfaces;
 using EnterpriseCommerce.Domain.Interfaces;
+using EnterpriseCommerce.Infrastructure.BackgroundServices;
 using EnterpriseCommerce.Infrastructure.Connections;
+using EnterpriseCommerce.Infrastructure.Messaging;
 using EnterpriseCommerce.Infrastructure.Repositories;
 using EnterpriseCommerce.Infrastructure.Services;
 using FluentValidation;
@@ -18,6 +20,7 @@ using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
 using Serilog;
 using System.Text;
+using EnterpriseCommerce.API;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +31,8 @@ builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<SqlConnectionFactory>();
-
+builder.Services.AddHostedService<
+    UserRegistrationConsumer>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
@@ -115,7 +119,13 @@ builder.Services.AddRateLimiter(options =>
 builder.Services.AddTransient(
     typeof(IPipelineBehavior<,>),
     typeof(ValidationBehavior<,>));
-//Redis changes start
+//RabbitMQ changes start
+builder.Services.AddSingleton<
+    IMessageBroker,
+    RabbitMqProducer>();
+
+//RabbitMQ changes end
+
 builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.Configuration =

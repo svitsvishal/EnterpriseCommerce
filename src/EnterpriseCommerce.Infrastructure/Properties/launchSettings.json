@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "EnterpriseCommerce.Infrastructure": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:61890;http://localhost:61891"
+    }
+  }
+}
