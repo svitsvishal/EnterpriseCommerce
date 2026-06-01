@@ -19,7 +19,7 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Restore
-        run: dotnet restore EnterpriseCommerce.sln
+        run: dotnet restore EnterpriseCommerce.slnx
 
       - name: Build
-        run: dotnet build EnterpriseCommerce.sln --configuration Release --no-restore
+        run: dotnet build EnterpriseCommerce.slnx --configuration Release --no-restore
