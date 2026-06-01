@@ -121,7 +121,7 @@ namespace EnterpriseCommerce.API.Controllers
                 return Unauthorized();
             }
 
-            if (existingToken.ExpiryDate < DateTime.UtcNow)
+            if (existingToken.ExpiryDate < DateTime.UtcNow) 
             {
                 return Unauthorized();
             }

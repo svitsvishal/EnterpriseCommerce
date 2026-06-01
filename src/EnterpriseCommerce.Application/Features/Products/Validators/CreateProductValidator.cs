@@ -14,6 +14,7 @@ namespace EnterpriseCommerce.Application.Features.Products.Validators
             RuleFor(x => x.Name)
                 .NotEmpty()
                 .MaximumLength(200);
+          
 
             RuleFor(x => x.Price)
                 .GreaterThan(0);
